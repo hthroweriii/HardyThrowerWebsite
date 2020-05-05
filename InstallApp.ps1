@@ -1,3 +1,4 @@
+$ErrorActionPreference = 'Stop'
 # Are you running in 32-bit mode?
 #   (\SysWOW64\ = 32-bit mode)
 
