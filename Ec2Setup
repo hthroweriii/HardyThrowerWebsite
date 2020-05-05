@@ -1,3 +1,4 @@
+<powershell>
 #IIS (Powershell)
 ECHO "Setting Up CodeDeploy"
 Import-Module AWSPowerShell
@@ -16,3 +17,4 @@ C:/temp/dotnet-hosting.exe -ArgumentList '/S' -PassThru
 ECHO "Set up HardyWebsite"  
 C:\Windows\System32\inetsrv\appcmd.exe add site /name:HardyWebsite /bindings:"http/*:81:" /physicalPath:"C:\HardyWebsite\publish" 
 ECHO "We did it! YAY!"
+</powershell>
