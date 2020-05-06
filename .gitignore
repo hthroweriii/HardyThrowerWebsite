@@ -11,6 +11,9 @@ autom4te.cache/
 tarballs/
 test-results/
 
+#AWS EC2 Key giles
+*.pem
+
 # Mac bundle stuff
 *.dmg
 *.app
