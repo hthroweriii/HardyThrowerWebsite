@@ -18,7 +18,9 @@ $WebClient.DownloadFile("https://download.visualstudio.microsoft.com/download/pr
 #This version installs to C:\Users\Administrator\AppData\Local\Microsoft\dotnet\
 C:/temp/dotnet-install.ps1
 C:/temp/dotnet-hosting.exe -ArgumentList '/S' -PassThru
+ECHO "Stopping Default Site"  
+C:\Windows\System32\inetsrv\appcmd.exe stop site "Default Web Site"
 ECHO "Set up HardyWebsite"  
-C:\Windows\System32\inetsrv\appcmd.exe add site /name:HardyWebsite /bindings:"http/*:81:" /physicalPath:"C:\HardyWebsite\publish" 
+C:\Windows\System32\inetsrv\appcmd.exe add site /name:HardyWebsite /bindings:"http/*:80:" /physicalPath:"C:\HardyWebsite\publish" 
 ECHO "We did it! YAY!"
 </powershell>
