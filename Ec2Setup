@@ -1,4 +1,8 @@
 <powershell>
+#Exclude from windows defender Fix COde Deploy 1920 error
+Write-Host ("Adding Windows Defender exclude for CodeDeploy...")
+Add-MpPreference -ExclusionPath ("C:\ProgramData\Amazon\CodeDeploy","$env:windir\Temp")
+
 #IIS (Powershell)
 ECHO "Setting Up CodeDeploy"
 Import-Module AWSPowerShell
