@@ -26,7 +26,6 @@ Write-Warning "Original arguments (if any): $args"
 # TODO find out better way to call dotnet instead of using a hard coded location.
 # Unfortuantely there are multiple versions of  dotnet installed and the deployment always chooses the wrong one :(
 C:\Users\Administrator\AppData\Local\Microsoft\dotnet\dotnet.exe restore C:/HardyWebsite
-C:\Users\Administrator\AppData\Local\Microsoft\dotnet\dotnet.exe publish C:/HardyWebsite --configuration release -o c:\HardyWebsite\publish 
-
 C:\Windows\System32\inetsrv\appcmd.exe stop site "HardyWebsite"
+C:\Users\Administrator\AppData\Local\Microsoft\dotnet\dotnet.exe publish C:/HardyWebsite --configuration release -o c:\HardyWebsite\publish 
 C:\Windows\System32\inetsrv\appcmd.exe start site "HardyWebsite" 
