@@ -1,4 +1,4 @@
-using HardyWebsite.Models;
+﻿using HardyWebsite.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
@@ -36,6 +36,21 @@ namespace MvcMovie.Controllers
             else
                 return "Session name not found";
         }
+
+        public void SetCookie(string key, string value)
+        {
+            Response.Cookies.Append(key, value);
+        }
+
+        public string GetCookie(string key)
+        {
+            string cookie;
+            if (Request.Cookies.TryGetValue(key, out cookie))
+                return cookie;
+            else
+                return $"Cookie {key} not found";
+        }
+
         // GET: /HelloWorld/Welcome/ 
         // Requires using System.Text.Encodings.Web;
         public string SetPizza(PizzaModel pizzaModel)
