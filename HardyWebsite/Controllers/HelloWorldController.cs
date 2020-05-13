@@ -1,7 +1,9 @@
-﻿using HardyWebsite.Models;
+using HardyWebsite.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using System;
+using System.Text;
 using System.Text.Encodings.Web;
 
 namespace MvcMovie.Controllers
@@ -21,6 +23,19 @@ namespace MvcMovie.Controllers
             return "This is my default action...";
         }
 
+        public void SetName()
+        {
+            HttpContext.Session.Set("Name", Encoding.ASCII.GetBytes("Hardy-" + DateTime.UtcNow.ToLongTimeString()));
+        }
+
+        public string GetName()
+        {
+            byte[] outByte;
+            if (HttpContext.Session.TryGetValue("Name", out outByte))
+                return Encoding.ASCII.GetString(outByte);
+            else
+                return "Session name not found";
+        }
         // GET: /HelloWorld/Welcome/ 
         // Requires using System.Text.Encodings.Web;
         public string SetPizza(PizzaModel pizzaModel)

@@ -40,8 +40,12 @@ namespace HardyWebsite
             //Add Redis Cache
             services.AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = "hardywebsitecache-001.5vcxm0.0001.use1.cache.amazonaws.com";
+                options.Configuration = "localhost";
                 options.InstanceName = "hardywebsitecache";
+            });
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(1);
             });
         }
 
@@ -75,6 +79,8 @@ namespace HardyWebsite
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
