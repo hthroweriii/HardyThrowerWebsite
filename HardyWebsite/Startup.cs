@@ -36,6 +36,10 @@ namespace HardyWebsite
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddHttpClient("thevirustracker", c =>
+            {
+                c.BaseAddress = new Uri("https://api.thevirustracker.com/");
+            });
 
             //Add Redis Cache
             services.AddStackExchangeRedisCache(options =>
