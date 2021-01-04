@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text.Json;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using HardyWebsite.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using static HardyWebsite.Models.CountryDataModel;
 
 namespace HardyWebsite.Controllers
 {
@@ -18,7 +14,8 @@ namespace HardyWebsite.Controllers
             this.clientFactory = clientFactory;
         }
 
-        public async Task<CountryDataModel> Index()
+        [Authorize(Roles = "TestRole")]
+        public async Task<ActionResult> Index()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "free-api?countryTotal=US");
             var client = clientFactory.CreateClient("thevirustracker");
@@ -26,11 +23,12 @@ namespace HardyWebsite.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                using var responseStream = await response.Content.ReadAsStreamAsync();
-                return await JsonSerializer.DeserializeAsync
-                        <CountryDataModel>(responseStream);
+                //using var responseStream = await response.Content.ReadAsStreamAsync();
+                //var modek = await JsonSerializer.DeserializeAsync
+                //        <CountryDataModel>(responseStream);
             }
-            return new CountryDataModel();
+            ViewBag.Message = new CovidCasesModel() { Number = 1 };
+            return View();
         }
     }
 }

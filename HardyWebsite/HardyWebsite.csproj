@@ -7,6 +7,9 @@
 
 
   <ItemGroup>
+    <None Remove="Helpers\MvcAppSupport.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
   </ItemGroup>
 
@@ -18,6 +21,16 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2" />
     <PackageReference Include="Microsoft.Extensions.Caching.Redis" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ServiceCollectionHelpers\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\CovidStats\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Account\Denied.cshtml" />
+  </ItemGroup>
 </Project>
